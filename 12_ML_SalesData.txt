@@ -1,0 +1,83 @@
+#%%
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans, k_means
+from sklearn.decomposition import PCA
+
+#%%
+
+
+df=pd.read_csv(r"C:\Users\rpsv1\Desktop\ML\archive (1)\sales_data_sample.csv", engine="python")
+
+print(df)
+
+print(df.head())
+
+print(df.shape)
+
+print(df.describe())
+
+print(df.info())
+#%%
+print(df.isnull().sum())
+
+print(df.dtypes)
+
+#%%
+df_drop = ['ORDERNUMBER', 'STATUS', 'CUSTOMERNAME', 'PHONE', 'ADDRESSLINE1', 'ADDRESSLINE2','CITY', 'STATE', 'POSTALCODE', 'TERRITORY', 'CONTACTLASTNAME', 'CONTACTFIRSTNAME']
+df = df.drop(df_drop, axis=1)
+
+#%%
+
+print(df.isnull().sum())
+
+#%%
+
+print(df.dtypes)
+#%%
+
+print(df.duplicated(keep='first').sum())
+#%%
+print(df.isna().sum())
+#%%
+print(df['COUNTRY'].unique())
+#%%
+print(df['PRODUCTLINE'].unique())
+#%%
+print(df['DEALSIZE'].unique())
+#%%
+productline = pd.get_dummies(df['PRODUCTLINE'])
+Dealsize = pd.get_dummies(df['DEALSIZE'])
+
+df = pd.concat([df,productline,Dealsize], axis = 1)
+
+print(df)
+#%%
+df_drop = ['COUNTRY','PRODUCTLINE','DEALSIZE']
+df = df.drop(df_drop, axis="columns")
+
+#df['PRODUCTCODE'] = pd.Categorical(df['PRODUCTCODE']).codes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

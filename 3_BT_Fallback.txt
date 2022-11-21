@@ -1,0 +1,26 @@
+pragma solidity  0.4.25;  
+  
+// Creating a contract 
+contract Types { 
+    uint[] marks = [10, 20, 30, 40, 50]; 
+    mapping(uint => uint) public mark;
+    struct Student {
+      uint roll; 
+      string name;
+      uint[] marks;
+      uint fee;
+    } 
+    Student s;
+   Student s1= Student(1,"abcd",marks,70);
+   function set_detail() public {
+      s = Student(12,"Shivani",marks,50);
+   }
+   function info()public view returns (uint roll,string memory) { 
+           
+        return(s.roll,s.name); 
+    }
+  
+      
+    
+    
+}
